@@ -1,7 +1,7 @@
 import { Component, OnInit, ChangeDetectionStrategy } from "@angular/core";
 
 import { Store } from "@ngrx/store";
-import { Observable } from "rxjs";
+import { from, Observable } from "rxjs";
 import { tap } from "rxjs/operators";
 import * as fromStore from "../../store";
 
@@ -35,6 +35,7 @@ export class ProductItemComponent implements OnInit {
   constructor(private store: Store<fromStore.ProductsState>) {}
 
   ngOnInit() {
+    this.store.dispatch(new fromStore.LoadToppings());
     this.pizza$ = this.store.select(fromStore.getSelectedPizza);
 
     // this.pizza$ = this.store.select(fromStore.getSelectedPizza).pipe(

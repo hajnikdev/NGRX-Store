@@ -25,10 +25,12 @@ export function reducer(
       };
     }
     case fromPizzas.LOAD_PIZZAS_SUCCESS: {
+      const data = action.payload;
       return {
         ...state,
         loading: false,
         loaded: true,
+        data,
       };
     }
     case fromPizzas.LOAD_PIZZAS_FAIL: {
@@ -38,6 +40,12 @@ export function reducer(
         loaded: false,
       };
     }
+    default: {
+      return state;
+    }
   }
-  return state;
 }
+
+export const getPizzasLoading = (state: PizzaState) => state.loading;
+export const getPizzasLoaded = (state: PizzaState) => state.loaded;
+export const getPizzas = (state: PizzaState) => state.data;

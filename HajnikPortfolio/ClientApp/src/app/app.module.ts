@@ -1,34 +1,47 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { RouterModule } from '@angular/router';
+import { NgModule } from "@angular/core";
+import { BrowserModule } from "@angular/platform-browser";
+import { Routes, RouterModule } from "@angular/router";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
-import { AppComponent } from './app.component';
-import { NavMenuComponent } from './nav-menu/nav-menu.component';
-import { HomeComponent } from './home/home.component';
-import { CounterComponent } from './counter/counter.component';
-import { FetchDataComponent } from './fetch-data/fetch-data.component';
+import { StoreModule, MetaReducer } from "@ngrx/store";
+import { EffectsModule } from "@ngrx/effects";
+
+// not used in production
+import { StoreDevtoolsModule } from "@ngrx/store-devtools";
+import { storeFreeze } from "ngrx-store-freeze";
+
+// this would be done dynamically with webpack for builds
+const environment = {
+  development: true,
+  production: false,
+};
+
+export const metaReducers: MetaReducer<any>[] = !environment.production
+  ? [storeFreeze]
+  : [];
+
+// bootstrap
+import { AppComponent } from "./containers/app/app.component";
+
+// routes
+export const ROUTES: Routes = [
+  { path: "", pathMatch: "full", redirectTo: "products" },
+  {
+    path: "products",
+    loadChildren: "../products/products.module#ProductsModule",
+  },
+];
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    NavMenuComponent,
-    HomeComponent,
-    CounterComponent,
-    FetchDataComponent
-  ],
   imports: [
-    BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
-    HttpClientModule,
-    FormsModule,
-    RouterModule.forRoot([
-      { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: 'counter', component: CounterComponent },
-      { path: 'fetch-data', component: FetchDataComponent },
-    ])
+    BrowserModule,
+    BrowserAnimationsModule,
+    RouterModule.forRoot(ROUTES),
+    StoreModule.forRoot({}, { metaReducers }),
+    EffectsModule.forRoot([]),
+    environment.development ? StoreDevtoolsModule.instrument() : [],
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  declarations: [AppComponent],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

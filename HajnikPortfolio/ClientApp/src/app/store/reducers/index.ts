@@ -1,8 +1,7 @@
 import {
-  ActivatedRoute,
+  ActivatedRouteSnapshot,
   RouterStateSnapshot,
   Params,
-  ActivatedRouteSnapshot,
 } from "@angular/router";
 import { createFeatureSelector, ActionReducerMap } from "@ngrx/store";
 
@@ -36,7 +35,6 @@ export class CustomSerializer
     while (state.firstChild) {
       state = state.firstChild;
     }
-
     const { params } = state;
 
     return { url, queryParams, params };

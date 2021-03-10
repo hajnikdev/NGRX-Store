@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 
-import { Observable, of, throwError } from "rxjs";
+import { Observable, throwError } from "rxjs";
 import { catchError } from "rxjs/operators";
 
 import { Topping } from "../models/topping.model";
@@ -11,79 +11,8 @@ export class ToppingsService {
   constructor(private http: HttpClient) {}
 
   getToppings(): Observable<Topping[]> {
-    return of([
-      {
-        name: "From service pizza",
-        toppings: [
-          {
-            id: 1,
-            name: "anchovy",
-          },
-          {
-            id: 2,
-            name: "bacon",
-          },
-          {
-            id: 3,
-            name: "basil",
-          },
-          {
-            id: 4,
-            name: "chili",
-          },
-          {
-            id: 5,
-            name: "mozzarella",
-          },
-          {
-            id: 6,
-            name: "mushroom",
-          },
-          {
-            id: 7,
-            name: "olive",
-          },
-          {
-            id: 8,
-            name: "onion",
-          },
-          {
-            id: 9,
-            name: "pepper",
-          },
-          {
-            id: 10,
-            name: "pepperoni",
-          },
-          {
-            id: 11,
-            name: "sweetcorn",
-          },
-          {
-            id: 12,
-            name: "tomato",
-          },
-        ],
-        id: 1,
-      },
-      {
-        name: "Second",
-        toppings: [
-          {
-            id: 1,
-            name: "anchovy",
-          },
-          {
-            id: 2,
-            name: "bacon",
-          },
-        ],
-        id: 2,
-      },
-    ]);
-
-    // return this.http
-    //   .get<Topping[]>(`/api/toppings`)
-    //   .pipe(catchError((error: any) => throwError(error)));
+    return this.http
+      .get<Topping[]>(`/api/toppings`)
+      .pipe(catchError((error: any) => throwError(error)));
   }
 }

@@ -49,6 +49,7 @@ export class ProductItemComponent implements OnInit {
   }
 
   onSelect(event: number[]) {
+    debugger;
     this.store.dispatch(new fromStore.VisualiseToppings(event));
   }
 

@@ -1,10 +1,15 @@
+using AutoMapper;
+using HajnikPortfolio.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using MySql.Data.MySqlClient;
+using PizzaWeb.Domain.Contracts;
+using PizzaWeb.Domain.Services;
+using PizzaWeb.Infrastructure.Data;
 
 namespace HajnikPortfolio
 {
@@ -26,6 +31,14 @@ namespace HajnikPortfolio
 			{
 				configuration.RootPath = "ClientApp/dist";
 			});
+
+			// DB
+			var appConnectionString = Configuration.GetConnectionString("DefaultConnection");
+
+			// SERVICES
+			services.AddTransient<IPizzaWebService, PizzaWebService>();
+			services.AddTransient<IPizzaWebRepository>(p => new PizzaWebRepository(new MySqlConnection(appConnectionString)));
+
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

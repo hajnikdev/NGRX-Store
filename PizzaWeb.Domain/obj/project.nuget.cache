@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "n5M4YEuzbkAGVqg9DyNAfYnR9PyXP9HIFVACOPtp8cqAf+6x+/y1ZQkv64PRYNNlbP1go1H+aVHa3XsMDQFqxg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\hajni\\Desktop\\Knižnica\\Práca\\Xolution\\EES\\NGRX-Store\\PizzaWeb.Domain\\PizzaWeb.Domain.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\hajni\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
+    "C:\\Users\\hajni\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
+    "C:\\Users\\hajni\\.nuget\\packages\\system.reflection.emit\\4.7.0\\system.reflection.emit.4.7.0.nupkg.sha512"
+  ],
+  "logs": []
+}

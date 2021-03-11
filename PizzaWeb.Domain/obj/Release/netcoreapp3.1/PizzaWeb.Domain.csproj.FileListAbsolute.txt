@@ -1,0 +1,9 @@
+C:\Users\hajni\Desktop\Knižnica\Práca\Xolution\EES\NGRX-Store\PizzaWeb.Domain\bin\Release\netcoreapp3.1\PizzaWeb.Domain.deps.json
+C:\Users\hajni\Desktop\Knižnica\Práca\Xolution\EES\NGRX-Store\PizzaWeb.Domain\bin\Release\netcoreapp3.1\PizzaWeb.Domain.dll
+C:\Users\hajni\Desktop\Knižnica\Práca\Xolution\EES\NGRX-Store\PizzaWeb.Domain\bin\Release\netcoreapp3.1\PizzaWeb.Domain.pdb
+C:\Users\hajni\Desktop\Knižnica\Práca\Xolution\EES\NGRX-Store\PizzaWeb.Domain\obj\Release\netcoreapp3.1\PizzaWeb.Domain.csprojAssemblyReference.cache
+C:\Users\hajni\Desktop\Knižnica\Práca\Xolution\EES\NGRX-Store\PizzaWeb.Domain\obj\Release\netcoreapp3.1\PizzaWeb.Domain.AssemblyInfoInputs.cache
+C:\Users\hajni\Desktop\Knižnica\Práca\Xolution\EES\NGRX-Store\PizzaWeb.Domain\obj\Release\netcoreapp3.1\PizzaWeb.Domain.AssemblyInfo.cs
+C:\Users\hajni\Desktop\Knižnica\Práca\Xolution\EES\NGRX-Store\PizzaWeb.Domain\obj\Release\netcoreapp3.1\PizzaWeb.Domain.csproj.CoreCompileInputs.cache
+C:\Users\hajni\Desktop\Knižnica\Práca\Xolution\EES\NGRX-Store\PizzaWeb.Domain\obj\Release\netcoreapp3.1\PizzaWeb.Domain.dll
+C:\Users\hajni\Desktop\Knižnica\Práca\Xolution\EES\NGRX-Store\PizzaWeb.Domain\obj\Release\netcoreapp3.1\PizzaWeb.Domain.pdb

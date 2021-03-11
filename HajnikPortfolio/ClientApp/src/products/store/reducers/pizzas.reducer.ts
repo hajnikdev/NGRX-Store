@@ -1,5 +1,5 @@
-import * as fromPizzas from "../actions/pizzas.action";
-import { Pizza } from "../../models/pizza.model";
+import * as fromPizzas from '../actions/pizzas.action';
+import { Pizza } from '../../models/pizza.model';
 
 export interface PizzaState {
   entities: { [id: number]: Pizza };
@@ -8,14 +8,14 @@ export interface PizzaState {
 }
 
 export const initialState: PizzaState = {
-  entities: [],
+  entities: {},
   loaded: false,
   loading: false,
 };
 
 export function reducer(
   state = initialState,
-  action: fromPizzas.PizzaAction
+  action: fromPizzas.PizzasAction
 ): PizzaState {
   switch (action.type) {
     case fromPizzas.LOAD_PIZZAS: {
@@ -24,6 +24,7 @@ export function reducer(
         loading: true,
       };
     }
+
     case fromPizzas.LOAD_PIZZAS_SUCCESS: {
       const pizzas = action.payload;
 
@@ -38,6 +39,7 @@ export function reducer(
           ...state.entities,
         }
       );
+
       return {
         ...state,
         loading: false,
@@ -45,6 +47,7 @@ export function reducer(
         entities,
       };
     }
+
     case fromPizzas.LOAD_PIZZAS_FAIL: {
       return {
         ...state,
@@ -52,10 +55,33 @@ export function reducer(
         loaded: false,
       };
     }
-    default: {
-      return state;
+
+    case fromPizzas.UPDATE_PIZZA_SUCCESS:
+    case fromPizzas.CREATE_PIZZA_SUCCESS: {
+      const pizza = action.payload;
+      const entities = {
+        ...state.entities,
+        [pizza.id]: pizza,
+      };
+
+      return {
+        ...state,
+        entities,
+      };
+    }
+
+    case fromPizzas.REMOVE_PIZZA_SUCCESS: {
+      const pizza = action.payload;
+      const { [pizza.id]: removed, ...entities } = state.entities;
+
+      return {
+        ...state,
+        entities,
+      };
     }
   }
+
+  return state;
 }
 
 export const getPizzasEntities = (state: PizzaState) => state.entities;
